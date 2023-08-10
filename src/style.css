@@ -1,3 +1,8 @@
 div {
 	border: red solid 2px;
 }
+
+.icon {
+	height: 50px;
+	width: 50px;
+}

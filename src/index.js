@@ -35,14 +35,57 @@ function fetchForecast(location) {
 		.then((data) => {
 			console.log(data);
 			displayData(data);
+			console.log(currentData(data));
 		})
 		.catch((error) => {
 			console.log(error);
 		});
 }
 
+function displayIcon(processed) {
+	let icon;
+	const { conditionCode } = processed;
+	const { isDay } = processed;
+	const sunny = [1000];
+	const cloudy = [1006, 1009];
+	const partCloud = [1003];
+	const rain = [
+		1246, 1153, 1168, 1171, 1183, 1186, 1189, 1192, 1195, 1198, 1201, 1240,
+		1243, 1063, 1072, 1150, 1180,
+	];
+	const rainThunder = [1087, 1273, 1276];
+	const snow = [
+		1252, 1255, 1114, 1117, 1204, 1207, 1213, 1219, 1258, 1261, 1264, 1225,
+		1237, 1249, 1066, 1069, 1210, 1216, 1222, 1279, 1282,
+	];
+	const mist = [1030, 1135, 1147];
+
+	if (sunny.includes(conditionCode)) {
+		if (isDay) {
+			icon = "./assets/sunny.svg";
+		} else {
+			icon = "./assets/moon.svg";
+		}
+	} else if (cloudy.includes(conditionCode)) {
+		icon = "./assets/cloud.svg";
+	} else if (partCloud.includes(conditionCode)) {
+		icon = "./assets/part-cloud.svg";
+	} else if (rain.includes(conditionCode)) {
+		icon = "./assets/rain.svg";
+	} else if (rainThunder.includes(conditionCode)) {
+		icon = "./assets/rain-thunder.svg";
+	} else if (snow.includes(conditionCode)) {
+		icon = "./assets/snow.svg";
+	} else if (mist.includes(conditionCode)) {
+		icon = "./assets/snow.svg";
+	}
+
+	return { icon };
+}
+
 function currentData(data) {
 	const condition = data.current.condition.text;
+	const conditionCode = data.current.condition.code;
 	const tempC = data.current.temp_c;
 	const feelLike = data.current.feelslike_c;
 	const { humidity } = data.current;
@@ -67,6 +110,7 @@ function currentData(data) {
 	const location = data.location.name;
 	return {
 		condition,
+		conditionCode,
 		tempC,
 		feelLike,
 		humidity,
@@ -90,7 +134,7 @@ function forecastData(data) {
 		maxTemp: item.day.maxtemp_c,
 		minTemp: item.day.mintemp_c,
 		chanceRain: item.day.daily_chance_of_rain,
-		condition: item.day.condition.text,
+		conditionCode: item.day.condition.code,
 	}));
 	return { array };
 }
@@ -109,6 +153,11 @@ function displayHero(data) {
 	dateDiv.innerText = current.currentDate;
 	timeDiv.innerText = current.currentTime;
 	tempDiv.innerText = current.tempC;
+	iconDiv.src = displayIcon(current).icon;
+}
+
+function displaySideBar(data) {
+	const current = currentData(data);
 }
 
 function displayData(data) {
@@ -118,3 +167,5 @@ function displayData(data) {
 		displayHero(data);
 	}
 }
+
+fetchForecast("London");
