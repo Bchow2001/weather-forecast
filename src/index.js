@@ -77,7 +77,7 @@ function displayIcon(processed) {
 	} else if (snow.includes(conditionCode)) {
 		icon = "./assets/snow.svg";
 	} else if (mist.includes(conditionCode)) {
-		icon = "./assets/snow.svg";
+		icon = "./assets/mist.svg";
 	}
 
 	return { icon };
