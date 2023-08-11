@@ -10,14 +10,12 @@
 	<body>
 		<div class="main-wrapper">
 			<div class="hero-wrapper">
-				<div class="weather"></div>
-				<div class="location"></div>
-				<div class="date"></div>
-				<div class="time"></div>
-				<div class="temperature-wrapper">
-					<div class="temperature"></div>
-					<div class="temp-unit">°C</div>
-				</div>
+				<div class="weather hero-item"></div>
+				<div class="location hero-item"></div>
+				<div class="region hero-item"></div>
+				<div class="date hero-item"></div>
+				<div class="time hero-item"></div>
+				<div class="temperature hero-item"></div>
 				<img src="" alt="Weather Icon" class="icon" />
 				<form action="#" id="form">
 					<div class="location-input">
@@ -30,38 +28,62 @@
 						/>
 					</div>
 					<button id="submit" type="button">
-						Show Weather Forecast
+						<img src="./assets/search.svg" alt="Search Icon" />
 					</button>
 				</form>
 			</div>
 			<div class="sidebar-wrapper">
 				<div class="sidebar-item" id="feels-like">
-					<div class="sidebar-icon"></div>
+					<img
+						src="./assets/thermometer.svg"
+						alt="Thermometer Icon"
+						class="sidebar-icon"
+					/>
 					<div class="sidebar-header">Feels Like</div>
 					<div class="sidebar-content"></div>
 				</div>
 				<div class="sidebar-item" id="rain-chance">
-					<div class="sidebar-icon"></div>
+					<img
+						src="./assets/rain.svg"
+						alt="Rain Icon"
+						class="sidebar-icon"
+					/>
 					<div class="sidebar-header">Chance of Rain</div>
 					<div class="sidebar-content"></div>
 				</div>
 				<div class="sidebar-item" id="humidity">
-					<div class="sidebar-icon"></div>
+					<img
+						src="./assets/humidity.svg"
+						alt="Humidity Icon"
+						class="sidebar-icon"
+					/>
 					<div class="sidebar-header">Humidity</div>
 					<div class="sidebar-content"></div>
 				</div>
 				<div class="sidebar-item" id="wind">
-					<div class="sidebar-icon"></div>
+					<img
+						src="./assets/wind.svg"
+						alt="Wind Icon"
+						class="sidebar-icon"
+					/>
 					<div class="sidebar-header">Wind Speed</div>
 					<div class="sidebar-content"></div>
 				</div>
 				<div class="sidebar-item" id="cloud">
-					<div class="sidebar-icon"></div>
+					<img
+						src="./assets/cloud.svg"
+						alt="Cloud Icon"
+						class="sidebar-icon"
+					/>
 					<div class="sidebar-header">Cloud Cover</div>
 					<div class="sidebar-content"></div>
 				</div>
 				<div class="sidebar-item" id="last-updated">
-					<div class="sidebar-icon"></div>
+					<img
+						src="./assets/last-updated.svg"
+						alt="Clock Icon"
+						class="sidebar-icon"
+					/>
 					<div class="sidebar-header">Last Updated</div>
 					<div class="sidebar-content"></div>
 				</div>

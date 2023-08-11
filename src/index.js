@@ -7,7 +7,7 @@ const form = document.querySelector("#form");
 
 submitBtn.addEventListener("click", (e) => {
 	e.preventDefault();
-	if (input.value.length > 3) {
+	if (input.value.length >= 3) {
 		fetchForecast(input.value);
 	} else {
 		form.reportValidity();
@@ -19,6 +19,11 @@ input.addEventListener("keyup", (e) => {
 	if (e.keyCode === 13) {
 		submitBtn.click();
 	}
+});
+
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+	form.reportValidity();
 });
 
 function fetchForecast(location) {
@@ -35,14 +40,13 @@ function fetchForecast(location) {
 		.then((data) => {
 			console.log(data);
 			displayData(data);
-			console.log(currentData(data));
 		})
 		.catch((error) => {
 			console.log(error);
 		});
 }
 
-function displayIcon(processed) {
+function fetchIcon(processed) {
 	let icon;
 	const { conditionCode } = processed;
 	const { isDay } = processed;
@@ -93,11 +97,7 @@ function currentData(data) {
 	const isDay = data.current.is_day;
 	const { cloud } = data.current;
 	const chanceRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
-	const lastDate = format(
-		new Date(data.current.last_updated),
-		"EEEE, do MMM ''yy",
-	);
-	const lastTime = format(new Date(data.current.last_updated), "h:mm a");
+
 	const currentDate = format(
 		new Date(data.location.localtime),
 		"EEEE, do MMM ''yy",
@@ -108,6 +108,7 @@ function currentData(data) {
 		new Date(data.current.last_updated),
 	);
 	const location = data.location.name;
+	const { region } = data.location;
 	return {
 		condition,
 		conditionCode,
@@ -118,12 +119,11 @@ function currentData(data) {
 		isDay,
 		cloud,
 		chanceRain,
-		lastDate,
-		lastTime,
 		currentDate,
 		currentTime,
 		lastUpdated,
 		location,
+		region,
 	};
 }
 
@@ -143,6 +143,7 @@ function displayHero(data) {
 	const current = currentData(data);
 	const weatherDiv = document.querySelector(".weather");
 	const locationDiv = document.querySelector(".location");
+	const regionDiv = document.querySelector(".region");
 	const dateDiv = document.querySelector(".date");
 	const timeDiv = document.querySelector(".time");
 	const tempDiv = document.querySelector(".temperature");
@@ -150,14 +151,28 @@ function displayHero(data) {
 
 	weatherDiv.innerText = current.condition;
 	locationDiv.innerText = current.location;
+	regionDiv.innerText = current.region;
 	dateDiv.innerText = current.currentDate;
 	timeDiv.innerText = current.currentTime;
-	tempDiv.innerText = current.tempC;
-	iconDiv.src = displayIcon(current).icon;
+	tempDiv.innerText = `${current.tempC} °C`;
+	iconDiv.src = fetchIcon(current).icon;
 }
 
-function displaySideBar(data) {
+function displaySidebar(data) {
 	const current = currentData(data);
+	const sidebarFeel = document.querySelector("#feels-like :nth-child(3)");
+	const sidebarRain = document.querySelector("#rain-chance :nth-child(3)");
+	const sidebarHumidity = document.querySelector("#humidity :nth-child(3)");
+	const sidebarWind = document.querySelector("#wind :nth-child(3)");
+	const sidebarCloud = document.querySelector("#cloud :nth-child(3)");
+	const sidebarUpdate = document.querySelector("#last-updated :nth-child(3)");
+
+	sidebarFeel.innerText = `${current.feelLike} °C`;
+	sidebarRain.innerText = `${current.chanceRain} %`;
+	sidebarHumidity.innerText = `${current.humidity} %`;
+	sidebarWind.innerText = `${current.wind} kph`;
+	sidebarCloud.innerText = `${current.cloud} %`;
+	sidebarUpdate.innerText = `${current.lastUpdated} ago`;
 }
 
 function displayData(data) {
@@ -165,6 +180,7 @@ function displayData(data) {
 		alert(data.error.message);
 	} else {
 		displayHero(data);
+		displaySidebar(data);
 	}
 }
 
