@@ -28,7 +28,7 @@ form.addEventListener("submit", (e) => {
 
 function fetchForecast(location) {
 	fetch(
-		`http://api.weatherapi.com/v1/forecast.json?key=7ed75af930ca4051994152454232007&q=${location}&days=7`,
+		`http://api.weatherapi.com/v1/forecast.json?key=7ed75af930ca4051994152454232007&q=${location}&days=8`,
 		{
 			mode: "cors",
 		},
@@ -38,7 +38,6 @@ function fetchForecast(location) {
 			return data;
 		})
 		.then((data) => {
-			console.log(data);
 			displayData(data);
 		})
 		.catch((error) => {
@@ -130,13 +129,41 @@ function currentData(data) {
 function forecastData(data) {
 	let array = data.forecast.forecastday;
 	array = array.map((item) => ({
+		date: item.date,
 		avgTemp: item.day.avgtemp_c,
 		maxTemp: item.day.maxtemp_c,
 		minTemp: item.day.mintemp_c,
 		chanceRain: item.day.daily_chance_of_rain,
 		conditionCode: item.day.condition.code,
 	}));
-	return { array };
+	return array;
+}
+
+function displayForecast(data) {
+	const forecast = forecastData(data);
+	forecast.shift();
+	console.log(forecast);
+	forecast.forEach((item, i) => {
+		item.isDay = true;
+
+		const forecastCard = document.getElementById(`${i}`);
+		const dateDiv = forecastCard.children[0];
+		const iconDiv = forecastCard.children[1];
+		const highDiv = forecastCard.children[2];
+		const avgDiv = forecastCard.children[3];
+		const lowDiv = forecastCard.children[4];
+		const chanceDiv = forecastCard.children[5];
+
+		const { icon } = fetchIcon(item);
+		const date = format(new Date(item.date), "EEE");
+
+		dateDiv.innerText = date;
+		iconDiv.src = icon;
+		highDiv.innerText = `${item.maxTemp} °C`;
+		avgDiv.innerText = `${item.avgTemp} °C`;
+		lowDiv.innerText = `${item.minTemp} °C`;
+		chanceDiv.innerText = `Chance of rain: ${item.chanceRain}%`;
+	});
 }
 
 function displayHero(data) {
@@ -176,11 +203,14 @@ function displaySidebar(data) {
 }
 
 function displayData(data) {
+	const errorDiv = document.querySelector(".error-message");
 	if (Object.prototype.hasOwnProperty.call(data, "error")) {
-		alert(data.error.message);
+		errorDiv.innerText = `${data.error.message} Please try again...`;
 	} else {
+		errorDiv.innerText = "";
 		displayHero(data);
 		displaySidebar(data);
+		displayForecast(data);
 	}
 }
 
