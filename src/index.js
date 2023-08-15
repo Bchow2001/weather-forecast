@@ -99,7 +99,7 @@ function currentData(data) {
 
 	const currentDate = format(
 		new Date(data.location.localtime),
-		"EEEE, do MMM ''yy",
+		"EEEE, do MMM yy",
 	);
 	const currentTime = format(new Date(data.location.localtime), "h:mm a");
 	const lastUpdated = formatDistance(

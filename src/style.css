@@ -1,35 +1,109 @@
+@font-face {
+	font-family: default-custom;
+	src: url(../dist/assets/Montserrat/Montserrat.ttf);
+}
+
 html,
 body {
 	height: 100vh;
 	width: 100vw;
 	padding: 0;
 	margin: 0;
+	font-family: default-custom, monospace;
+	color: white;
+}
+
+body {
+	background-image: url(../dist/assets/9711644.png);
+	background-size: fill;
 }
 
 div {
 	/* border: red solid 2px; */
 }
 
+/* Main Wrapper Styling */
+
 .main-wrapper {
 	height: 100%;
 	display: grid;
-	grid-template-columns: 5fr 1fr;
+	grid-template-columns: 6fr minmax(200px, 1fr);
 	grid-template-rows: 4fr 1fr;
+}
+
+/* Hero Styling */
+
+.hero-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .icon {
 	height: 50px;
 	width: 50px;
+	color: white;
+}
+
+/* Search bar Styling */
+.search-bar {
+	display: flex;
+	border-bottom: 1px white solid;
+}
+
+#location {
+	border: 0;
+	width: 10rem;
+	background: none;
+}
+
+#location:focus {
+	outline: none;
+}
+
+#submit {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#search-icon {
+	height: 10px;
+}
+
+::placeholder {
+	color: white;
+}
+
+/* Sidebar styling */
+.sidebar-wrapper {
+	display: flex;
+	flex-direction: column;
+	font-size: 13px;
+}
+
+.sidebar-item {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
 }
 
 .sidebar-icon {
-	height: 20px;
+	height: 30px;
+	grid-row: 1/3;
+	justify-self: end;
 }
 
 /* Forecast Footer Styles */
 
 .forecast-wrapper {
 	display: flex;
+	grid-column: 1/3;
 }
 
 .forecast-card {

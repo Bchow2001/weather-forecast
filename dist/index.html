@@ -10,15 +10,16 @@
 	<body>
 		<div class="main-wrapper">
 			<div class="hero-wrapper">
+				<img src="" alt="Weather Icon" class="icon" />
 				<div class="weather hero-item"></div>
 				<div class="location hero-item"></div>
 				<div class="region hero-item"></div>
 				<div class="date hero-item"></div>
 				<div class="time hero-item"></div>
 				<div class="temperature hero-item"></div>
-				<img src="" alt="Weather Icon" class="icon" />
+
 				<form action="#" id="form">
-					<div class="location-input">
+					<div class="search-bar">
 						<input
 							type="text"
 							id="location"
@@ -26,10 +27,14 @@
 							minlength="3"
 							placeholder="Search Location..."
 						/>
+						<button id="submit" type="button">
+							<img
+								src="./assets/search.svg"
+								alt="Search Icon"
+								id="search-icon"
+							/>
+						</button>
 					</div>
-					<button id="submit" type="button">
-						<img src="./assets/search.svg" alt="Search Icon" />
-					</button>
 					<div class="error-message"></div>
 				</form>
 			</div>
