@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script defer src="runtime.js"></script>
+		<script defer src="index.js"></script>
+		<title>liberty.weather</title>
+		<link rel="icon" type="image/x-icon" href="./assets/Logo.jpg" />
+	</head>
+	<body>
+		<div class="main-wrapper">
+			<div class="hero-wrapper">
+				<img src="" alt="Weather Icon" class="icon" />
+				<div class="weather hero-item"></div>
+				<div class="location hero-item"></div>
+				<div class="region hero-item"></div>
+				<div class="date hero-item"></div>
+				<div class="time hero-item"></div>
+				<div class="temperature hero-item"></div>
+
+				<form action="#" id="form">
+					<div class="search-bar">
+						<input
+							type="text"
+							id="location"
+							name="location"
+							minlength="3"
+							placeholder="Search Location..."
+							autocomplete="off"
+						/>
+						<button id="submit" type="button">
+							<img
+								src="./assets/search.svg"
+								alt="Search Icon"
+								id="search-icon"
+							/>
+						</button>
+					</div>
+					<div class="error-message"></div>
+				</form>
+			</div>
+			<div class="sidebar-wrapper">
+				<div class="sidebar-item" id="feels-like">
+					<img
+						src="./assets/thermometer.svg"
+						alt="Thermometer Icon"
+						class="sidebar-icon"
+					/>
+					<div class="sidebar-header">Feels Like</div>
+					<div class="sidebar-content"></div>
+				</div>
+				<div class="sidebar-item" id="rain-chance">
+					<img
+						src="./assets/rain.svg"
+						alt="Rain Icon"
+						class="sidebar-icon"
+					/>
+					<div class="sidebar-header">Chance of Rain</div>
+					<div class="sidebar-content"></div>
+				</div>
+				<div class="sidebar-item" id="humidity">
+					<img
+						src="./assets/humidity.svg"
+						alt="Humidity Icon"
+						class="sidebar-icon"
+					/>
+					<div class="sidebar-header">Humidity</div>
+					<div class="sidebar-content"></div>
+				</div>
+				<div class="sidebar-item" id="wind">
+					<img
+						src="./assets/wind.svg"
+						alt="Wind Icon"
+						class="sidebar-icon"
+					/>
+					<div class="sidebar-header">Wind Speed</div>
+					<div class="sidebar-content"></div>
+				</div>
+				<div class="sidebar-item" id="cloud">
+					<img
+						src="./assets/cloud.svg"
+						alt="Cloud Icon"
+						class="sidebar-icon"
+					/>
+					<div class="sidebar-header">Cloud Cover</div>
+					<div class="sidebar-content"></div>
+				</div>
+				<div class="sidebar-item" id="last-updated">
+					<img
+						src="./assets/last-updated.svg"
+						alt="Clock Icon"
+						class="sidebar-icon"
+					/>
+					<div class="sidebar-header">Last Updated</div>
+					<div class="sidebar-content"></div>
+				</div>
+			</div>
+
+			<div class="forecast-wrapper">
+				<div class="forecast-card" id="0">
+					<div class="forecast-day"></div>
+					<img src="" alt="Weather Icon" class="forecast-weather" />
+					<div class="forecast-high"></div>
+					<div class="forecast-avg"></div>
+					<div class="forecast-low"></div>
+					<div class="forecast-chance"></div>
+				</div>
+				<div class="forecast-card" id="1">
+					<div class="forecast-day"></div>
+					<img src="" alt="" class="forecast-weather" />
+					<div class="forecast-high"></div>
+					<div class="forecast-avg"></div>
+					<div class="forecast-low"></div>
+					<div class="forecast-chance"></div>
+				</div>
+				<div class="forecast-card" id="2">
+					<div class="forecast-day"></div>
+					<img src="" alt="" class="forecast-weather" />
+					<div class="forecast-high"></div>
+					<div class="forecast-avg"></div>
+					<div class="forecast-low"></div>
+					<div class="forecast-chance"></div>
+				</div>
+				<div class="forecast-card" id="3">
+					<div class="forecast-day"></div>
+					<img src="" alt="" class="forecast-weather" />
+					<div class="forecast-high"></div>
+					<div class="forecast-avg"></div>
+					<div class="forecast-low"></div>
+					<div class="forecast-chance"></div>
+				</div>
+				<div class="forecast-card" id="4">
+					<div class="forecast-day"></div>
+					<img src="" alt="" class="forecast-weather" />
+					<div class="forecast-high"></div>
+					<div class="forecast-avg"></div>
+					<div class="forecast-low"></div>
+					<div class="forecast-chance"></div>
+				</div>
+				<div class="forecast-card" id="5">
+					<div class="forecast-day"></div>
+					<img src="" alt="" class="forecast-weather" />
+					<div class="forecast-high"></div>
+					<div class="forecast-avg"></div>
+					<div class="forecast-low"></div>
+					<div class="forecast-chance"></div>
+				</div>
+				<div class="forecast-card" id="6">
+					<div class="forecast-day"></div>
+					<img src="" alt="" class="forecast-weather" />
+					<div class="forecast-high"></div>
+					<div class="forecast-avg"></div>
+					<div class="forecast-low"></div>
+					<div class="forecast-chance"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
