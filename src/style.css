@@ -38,14 +38,41 @@ div {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	gap: 2px;
 }
 
 .icon {
-	height: 50px;
-	width: 50px;
+	height: 4.5rem;
 	color: white;
 }
 
+.weather {
+	font-size: 2.5rem;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+
+.location {
+	font-size: 1.2rem;
+}
+
+.region {
+	font-size: 0.65rem;
+}
+
+.date {
+	font-size: 0.65rem;
+}
+
+.time {
+	font-size: 0.85rem;
+}
+
+.temperature {
+	font-size: 2.5rem;
+	font-weight: 600;
+	margin-top: 15px;
+}
 /* Search bar Styling */
 .search-bar {
 	display: flex;
@@ -56,10 +83,15 @@ div {
 	border: 0;
 	width: 10rem;
 	background: none;
+	color: white;
 }
 
 #location:focus {
 	outline: none;
+}
+
+#location:active {
+	background: none;
 }
 
 #submit {
@@ -73,7 +105,7 @@ div {
 }
 
 #search-icon {
-	height: 10px;
+	height: 15px;
 }
 
 ::placeholder {
@@ -85,12 +117,14 @@ div {
 	display: flex;
 	flex-direction: column;
 	font-size: 13px;
+	gap: 10px;
 }
 
 .sidebar-item {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr;
+	column-gap: 10px;
 }
 
 .sidebar-icon {
@@ -111,6 +145,24 @@ div {
 	text-align: center;
 }
 
+.forecast-day {
+	font-size: 1.2rem;
+}
+
 .forecast-weather {
-	height: 20px;
+	height: 35px;
+}
+
+.forecast-high,
+.forecast-low {
+	font-size: 0.75rem;
+}
+
+.forecast-avg {
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+
+.forecast-chance {
+	font-size: 0.65rem;
 }

@@ -9,6 +9,8 @@ submitBtn.addEventListener("click", (e) => {
 	e.preventDefault();
 	if (input.value.length >= 3) {
 		fetchForecast(input.value);
+		input.value = "";
+		input.blur();
 	} else {
 		form.reportValidity();
 	}
