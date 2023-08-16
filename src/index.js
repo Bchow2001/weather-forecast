@@ -161,9 +161,9 @@ function displayForecast(data) {
 
 		dateDiv.innerText = date;
 		iconDiv.src = icon;
-		highDiv.innerText = `${item.maxTemp} °C`;
-		avgDiv.innerText = `${item.avgTemp} °C`;
-		lowDiv.innerText = `${item.minTemp} °C`;
+		highDiv.innerText = `${Math.round(item.maxTemp)} °C`;
+		avgDiv.innerText = `${Math.round(item.avgTemp)} °C`;
+		lowDiv.innerText = `${Math.round(item.minTemp)} °C`;
 		chanceDiv.innerText = `Chance of rain: ${item.chanceRain}%`;
 	});
 }
